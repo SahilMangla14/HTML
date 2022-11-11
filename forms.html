@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms Demo</title>
+</head>
+<body>
+    <!--1) action is where the http request should go on submitting the form 
+        2) type is which type of input you want
+        3) placeholder places the text before the user enters something
+        4)label has two purposes- a) to describe the textbox
+                                  b) to link the textbox with description using for and id
+        5) id should be unique and for should contain the same name as id
+        name attribut is basically the variable to which the the value that we enter is assigned
+        there may be many things like password which do not want to show up in URL but we can't do anything
+        for this right now but later we will study differnt type of HTTP requests where we can deal with it.-->
+    <!-- eg -> file:///C:/tacos?username=sahil&pass=12345&colour=%23000000&num=3 -->
+    <form action="/tacos">
+        <p>
+            <label for="username" >Enter a username: </label>
+            <input id = "username" type="text" placeholder="username" name = "username">
+        </p>
+
+
+        <p>
+            <label for="password">Enter the password</label>
+            <input id = "password" type="password" placeholder="password" name = "pass">
+        </p>
+
+
+        <p>
+            <input type="color" name = "colour">
+        </p>
+
+
+        <p>
+            <!-- another method -->
+            <label>
+                Enter a number
+                <input type="number" min="1" max="10" placeholder="enter a number" name = "num">
+            </label>
+        </p>
+
+
+        <br>
+        <input type="time">
+
+
+        <br>
+        <input type="checkbox">
+
+
+        <br>
+        <input type="button">
+
+
+        <br>
+        <button>Submit</button>
+
+
+        <br>
+        <button type="button">Please do not submit the form</button>  <!-- It won't do anything until we add some funtionality using javascript-->
+
+
+        <input type="submit" value="click me"> <!-- value is used to give name to this button-->
+
+
+        <button>Not inside form</button> <!-- button's default behaviour is submit so it goes to action-->
+
+
+    </form>
+    <hr>
+    <!-- outside a form , no default behaviour-->
+    <button>Not inside form</button> <!-- for this action is not specified as it is outside the form so it won't do anything without javascript-->
+
+
+    <!-- Hijacking goodle and reddit servers -->
+    <form action="https://www.reddit.com/search">
+        <input type="text" name = "q">
+        <button>Search Reddit</button>
+    </form>
+
+    <!-- https://www.google.com/search?q=pizza+hut&oq=pizz&aqs=chrome.0.0i355i433i512j46i199i433i465i512j46i433i512j69i57j0i433i457i512j0i402l2j0i512j0i433i512j0i512.1400j0j7&sourceid=chrome&ie=UTF-8 -->
+    <form action="https://www.google.com/search">
+        <input type="text" name="q">
+        <button>Search google</button>
+    </form>
+
+    <!-- https://www.youtube.com/results?search_query=best+css+projects -->
+    <form action="https://www.youtube.com/results">
+        <input type="text" name = "search_query">
+        <button>Search Youtube</button>
+        <!-- hitting enter will also submit the form -->
+    </form>
+
+
+    <h2>More Inputs</h2>
+    <form action="/birds">
+        <p>
+            <input type="checkbox" name="agree_tos" id = "agree" checked>
+            <label for="agree">I agree to everything</label>
+        </p>
+
+        <p>
+            <label for="xs">XS</label>
+            <input type="radio" name = "size" id="xs" value="xs">
+            <label for="s">S</label>
+            <input type="radio" name = "size" id="s" value="s">
+            <label for="m">M</label>
+            <input type="radio" name = "size" id="m" value="m">
+        </p>
+
+
+        <p>
+            <label for="meal">Please select an Entree</label>
+            <select name="meal" id="meal">
+                <option value="fish">Fish</option>
+                <option value="veg" selected>Vegetarian</option>
+                <option value="steak">Steak</option>
+            </select>
+        </p> 
+
+
+        <p>
+            <label for="cheese">Amount of cheese:</label>
+            <input type="range" id="cheese" min="1" max="100" step="7" name="cheese_level">
+        </p>
+
+
+        <p>
+            <label for="requests">Any special requests</label>
+            <textarea name="requests" id="requests" cols="30" rows="10"></textarea>
+        </p>
+
+
+        <button>submit</button>
+    </form>
+
+    <!-- basically
+        for and id are used to connect each other. Both should have same thing inside quotes to connect
+        name is the variable name to which the value we enter is assigned
+        value is given to name In case of checkboxes or select etc., selecting option would assign name the value on but it do not tell us which option is checked or selected. That is why we give value to it
+        writing checked make it prechecked and writing selected make it preselected
+     -->
+
+
+    <h2>Form Validations</h2>
+    <form action="/dummy">
+        <label for="first">Enter first name</label>
+        <input type="text" name="first" id = "first" required>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" minlength="5" maxlength="28">
+        <p>
+            <input type="email" required>
+            <input type="url">
+            <!-- have some pattern associated with it. We can also add out pattern -->
+        </p>
+        <button>Submit</button>
+    </form>
+
+</body>
+</html>
